@@ -1,7 +1,15 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import contactRoutes from './routes/contacts.routes';
+import { Router } from 'express';
+import { getContacts, createContact, updateContact, deleteContact } from './controllers/contacts.controller';
+
+const contactRoutes = Router();
+contactRoutes.get('/', getContacts);
+contactRoutes.post('/', createContact);
+contactRoutes.put('/:id', updateContact);
+contactRoutes.delete('/:id', deleteContact);
+
 
 const app = express();
 
