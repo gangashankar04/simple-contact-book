@@ -1,7 +1,22 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import Contact from './models/contact.model';
+import mongoose, { Schema, Document } from 'mongoose';
+
+// Contact Model
+interface IContact extends Document {
+  name: string;
+  email: string;
+  phone: string;
+}
+
+const ContactSchema: Schema = new Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  phone: { type: String, required: true }
+}, { timestamps: true });
+
+const Contact = mongoose.model<IContact>('Contact', ContactSchema);
 
 const app = express();
 
@@ -54,3 +69,4 @@ app.get('*', (req: express.Request, res: express.Response) => {
 });
 
 export default app;
+
