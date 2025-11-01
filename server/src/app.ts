@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
-import contactRoutes from './routes/contacts.routes.js';
+import contactRoutes from './routes/contacts.routes';
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.use('/api/contacts', contactRoutes);
 
-app.get('*', (req, res) => {
+app.get('*', (req: express.Request, res: express.Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
