@@ -1,0 +1,14 @@
+<div>
+  <h2>Contacts</h2>
+  <div *ngFor="let contact of contacts" class="contact-item">
+    <h3>{{contact.name}}</h3>
+    <p>Email: {{contact.email}}</p>
+    <p>Phone: {{contact.phone}}</p>
+    <button class="btn-danger" (click)="deleteContact(contact._id!)">
+      Delete
+    </button>
+  </div>
+  <div *ngIf="contacts.length === 0">
+    <p>No contacts found.</p>
+  </div>
+</div>
