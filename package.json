@@ -1,0 +1,16 @@
+{
+  "name": "simple-contact-book",
+  "version": "1.0.0",
+  "description": "MEAN stack contact book application",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "cd server && npm run dev",
+    "client": "cd client && ng serve",
+    "build": "npm install && cd server && npm install && cd ../client && npm install && ng build --output-path=../server/public && cd ../server && npm run build",
+    "start": "cd server && npm start",
+    "install-deps": "npm install && cd server && npm install && cd ../client && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
+}

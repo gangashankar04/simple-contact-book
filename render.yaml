@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: contact-book-app
+    env: node
+    buildCommand: npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        fromDatabase:
+          name: contact-book-db
+          property: connectionString
+  
+  - type: pserv
+    name: contact-book-db
+    env: docker
+    dockerfilePath: ./Dockerfile.mongo
+    disk:
+      name: mongodb-data
+      mountPath: /data/db
+      sizeGB: 1
